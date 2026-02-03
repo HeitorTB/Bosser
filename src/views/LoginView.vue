@@ -21,8 +21,3 @@
     </div>
   </main>
 </template>
-
-<style scoped>
-/* Se precisar ajustar algo específico só do login, coloque aqui.
-   O estilo principal já vem do principal.css global. */
-</style>

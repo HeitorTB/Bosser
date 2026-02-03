@@ -8,19 +8,15 @@ import imgVerde from '@/assets/Imagens/Birken_verde.png'
 import imgCinza from '@/assets/Imagens/Birken_Cinza.png'
 
 const listaBirkens = ref([])
-
-// Lista AUMENTADA para 12 itens
 const dadosPadrao = [
   { id: 1, nome: 'Sandália Birken Preta', preco: 'R$ 259,90', img: imgPreta },
   { id: 2, nome: 'Sandália Birken OFF White', preco: 'R$ 259,90', img: imgOff },
   { id: 3, nome: 'Sandália Birken Verde', preco: 'R$ 259,90', img: imgVerde },
   { id: 4, nome: 'Sandália Birken Cinza', preco: 'R$ 259,90', img: imgCinza },
-  // Repetindo...
   { id: 5, nome: 'Birken Preta Clássica', preco: 'R$ 259,90', img: imgPreta },
   { id: 6, nome: 'Birken White Basic', preco: 'R$ 259,90', img: imgOff },
   { id: 7, nome: 'Birken Verde Musgo', preco: 'R$ 259,90', img: imgVerde },
   { id: 8, nome: 'Birken Cinza Urbano', preco: 'R$ 259,90', img: imgCinza },
-  // Repetindo mais uma vez...
   { id: 9, nome: 'Birken Confort Preta', preco: 'R$ 259,90', img: imgPreta },
   { id: 10, nome: 'Birken OFF Style', preco: 'R$ 259,90', img: imgOff },
   { id: 11, nome: 'Birken Nature Green', preco: 'R$ 259,90', img: imgVerde },
@@ -28,7 +24,6 @@ const dadosPadrao = [
 ]
 
 onMounted(() => {
-  // Mudei o nome para '_v2' para forçar a atualização da lista
   const dadosSalvos = localStorage.getItem('minhasBirkens_v2')
   
   if (dadosSalvos) {
@@ -60,12 +55,11 @@ onMounted(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 60px;
-  justify-content: center; /* Centraliza os itens na linha */
+  justify-content: center;
   padding: 20px;
   
-  /* --- A CORREÇÃO MÁGICA --- */
-  margin: 0 auto; /* Remove a margem lateral antiga e centraliza o bloco */
-  width: 100%;    /* Garante que use a tela toda */
-  max-width: 1200px; /* (Opcional) Limita a largura em telas gigantes */
+  margin: 0 auto; 
+  width: 100%;    
+  max-width: 1200px; 
 }
 </style>
