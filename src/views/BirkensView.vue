@@ -59,7 +59,7 @@ onMounted(() => {
 .grade-produtos {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 60px;
   justify-content: center; /* Centraliza os itens na linha */
   padding: 20px;
   
