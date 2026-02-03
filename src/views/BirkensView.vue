@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue'
 import CardProduto from '../components/CardProduto.vue'
 
-// Importando imagens
 import imgPreta from '@/assets/Imagens/Birken_Preta.png'
 import imgOff from '@/assets/Imagens/Birken_off.png'
 import imgVerde from '@/assets/Imagens/Birken_verde.png'
@@ -10,24 +9,32 @@ import imgCinza from '@/assets/Imagens/Birken_Cinza.png'
 
 const listaBirkens = ref([])
 
-// Lista fixa (serve como nosso "backup" inicial)
+// Lista AUMENTADA para 12 itens
 const dadosPadrao = [
   { id: 1, nome: 'Sandália Birken Preta', preco: 'R$ 259,90', img: imgPreta },
   { id: 2, nome: 'Sandália Birken OFF White', preco: 'R$ 259,90', img: imgOff },
   { id: 3, nome: 'Sandália Birken Verde', preco: 'R$ 259,90', img: imgVerde },
   { id: 4, nome: 'Sandália Birken Cinza', preco: 'R$ 259,90', img: imgCinza },
+  // Repetindo...
+  { id: 5, nome: 'Birken Preta Clássica', preco: 'R$ 259,90', img: imgPreta },
+  { id: 6, nome: 'Birken White Basic', preco: 'R$ 259,90', img: imgOff },
+  { id: 7, nome: 'Birken Verde Musgo', preco: 'R$ 259,90', img: imgVerde },
+  { id: 8, nome: 'Birken Cinza Urbano', preco: 'R$ 259,90', img: imgCinza },
+  // Repetindo mais uma vez...
+  { id: 9, nome: 'Birken Confort Preta', preco: 'R$ 259,90', img: imgPreta },
+  { id: 10, nome: 'Birken OFF Style', preco: 'R$ 259,90', img: imgOff },
+  { id: 11, nome: 'Birken Nature Green', preco: 'R$ 259,90', img: imgVerde },
+  { id: 12, nome: 'Birken Grey Day', preco: 'R$ 259,90', img: imgCinza },
 ]
 
 onMounted(() => {
-  // Verifica se JÁ existe algo salvo
-  const dadosSalvos = localStorage.getItem('minhasBirkens')
+  // Mudei o nome para '_v2' para forçar a atualização da lista
+  const dadosSalvos = localStorage.getItem('minhasBirkens_v2')
   
   if (dadosSalvos) {
-    // Se existir, carrega do armazenamento
     listaBirkens.value = JSON.parse(dadosSalvos)
   } else {
-    // Se NÃO existir, salva a lista padrão no armazenamento e carrega ela
-    localStorage.setItem('minhasBirkens', JSON.stringify(dadosPadrao))
+    localStorage.setItem('minhasBirkens_v2', JSON.stringify(dadosPadrao))
     listaBirkens.value = dadosPadrao
   }
 })
@@ -36,7 +43,7 @@ onMounted(() => {
 <template>
   <main>
     <h2 class="titulo">Sandálias Birken</h2>
-    <section>
+    <section class="grade-produtos">
       <CardProduto 
         v-for="item in listaBirkens" 
         :key="item.id"
@@ -47,3 +54,18 @@ onMounted(() => {
     </section>
   </main>
 </template>
+
+<style scoped>
+.grade-produtos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center; /* Centraliza os itens na linha */
+  padding: 20px;
+  
+  /* --- A CORREÇÃO MÁGICA --- */
+  margin: 0 auto; /* Remove a margem lateral antiga e centraliza o bloco */
+  width: 100%;    /* Garante que use a tela toda */
+  max-width: 1200px; /* (Opcional) Limita a largura em telas gigantes */
+}
+</style>
